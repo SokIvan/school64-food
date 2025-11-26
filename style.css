@@ -1,0 +1,265 @@
+/* ЭЛЕГАНТНЫЙ СИНЕ-ЗЕЛЕНЫЙ СТИЛЬ ДЛЯ СВЕТЛОЙ ТЕМЫ */
+:root {
+    --primary-blue: #1E88E5;
+    --dark-blue: #1565C0;
+    --light-blue: #64B5F6;
+    --accent-green: #4CAF50;
+    --light-green: #81C784;
+    --dark-green: #388E3C;
+    --white: #FFFFFF;
+    --light-gray: #F8F9FA;
+    --border-light: #E0E0E0;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+}
+
+/* ОСНОВНЫЕ СТИЛИ */
+.main-header {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 25px;
+    border: 2px solid var(--light-blue);
+    border-radius: 20px;
+    background-color: var(--white);
+    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.15);
+}
+
+.sub-header {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* КАРТОЧКИ МЕТРИК */
+.metric-card {
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--light-blue);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(30, 136, 229, 0.2);
+    border-color: var(--primary-blue);
+}
+
+/* ЗАГОЛОВКИ СЕКЦИЙ */
+.section-header {
+    font-size: 1.8rem;
+    color: var(--dark-blue);
+    border-left: 6px solid var(--primary-blue);
+    padding-left: 20px;
+    margin: 3rem 0 2rem 0;
+    font-weight: 600;
+    background: linear-gradient(45deg, var(--dark-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: var(--light-gray);
+}
+
+/* ИНФО-БОКСЫ */
+.info-box {
+    background: linear-gradient(135deg, var(--white) 0%, #E3F2FD 100%);
+    padding: 25px;
+    border-radius: 16px;
+    margin: 20px 0;
+    box-shadow: 0 6px 20px rgba(30, 136, 229, 0.1);
+    border: 2px solid var(--light-blue);
+    border-left: 6px solid var(--primary-blue);
+}
+
+.info-box h3 {
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.info-box p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* TELEGRAM БОКС */
+.telegram-box {
+    background: linear-gradient(135deg, var(--white) 0%, #E8F5E9 100%);
+    padding: 22px;
+    border-radius: 16px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.15);
+    border: 2px solid var(--light-green);
+    border-left: 6px solid var(--accent-green);
+    transition: all 0.3s ease;
+}
+
+.telegram-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+}
+
+.telegram-box h4 {
+    color: var(--dark-green);
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.telegram-box a {
+    color: var(--dark-green) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.telegram-box a:hover {
+    text-decoration: underline;
+}
+
+/* КНОПКИ */
+.stButton button {
+    background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.stButton button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
+    background: linear-gradient(45deg, var(--dark-blue), var(--primary-blue));
+}
+
+.stButton button:hover::before {
+    left: 100%;
+}
+
+/* ГРАФИКИ - КРАСИВЫЕ ТЕНИ И РАМКИ */
+.js-plotly-plot .plotly, .plot-container {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-light);
+    background: white !important;
+}
+
+/* САЙДБАР */
+section[data-testid="stSidebar"] > div {
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
+    border-right: 2px solid var(--light-blue);
+}
+
+/* МЕТРИКИ */
+[data-testid="stMetricValue"] {
+    font-size: 1.8rem !important;
+    font-weight: 700;
+    color: var(--dark-blue) !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 1rem !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+}
+
+/* АНИМАЦИИ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.element-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 768px) {
+    .main-header {
+        font-size: 2.2rem;
+        padding: 15px;
+    }
+    
+    .metric-card {
+        padding: 20px;
+    }
+    
+    .section-header {
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+}
+
+/* КРАСИВЫЕ РАЗДЕЛИТЕЛИ */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+    margin: 2rem 0;
+}
+
+/* КАСТОМНЫЕ SCROLLBARS */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-blue), var(--accent-green));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--dark-blue), var(--dark-green));
+}
