@@ -1,16 +1,16 @@
-/* ЭЛЕГАНТНЫЙ СИНЕ-ЗЕЛЕНЫЙ СТИЛЬ ДЛЯ СВЕТЛОЙ ТЕМЫ */
+/* style.css */
+/* ОСНОВНАЯ ЦВЕТОВАЯ ПАЛИТРА В ПОСТЕЛЬНЫХ ТОНАХ */
 :root {
-    --primary-blue: #1E88E5;
-    --dark-blue: #1565C0;
-    --light-blue: #64B5F6;
-    --accent-green: #4CAF50;
-    --light-green: #81C784;
-    --dark-green: #388E3C;
+    --toasted-caramel: #84592B;
+    --golden-batter: #E8D1A7;
+    --spiced-wine: #743014;
+    --olive-harvest: #9D9167;
+    --couhide-cocoa: #442D1C;
     --white: #FFFFFF;
-    --light-gray: #F8F9FA;
-    --border-light: #E0E0E0;
-    --text-primary: #212121;
-    --text-secondary: #757575;
+    --light-cream: #F8F5F0;
+    --border-light: #E8E1D1;
+    --text-primary: #2C2C2C;
+    --text-secondary: #5D5D5D;
 }
 
 /* ОСНОВНЫЕ СТИЛИ */
@@ -19,14 +19,14 @@
     text-align: center;
     margin-bottom: 1rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    background: linear-gradient(135deg, var(--toasted-caramel) 0%, var(--spiced-wine) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     padding: 25px;
-    border: 2px solid var(--light-blue);
+    border: 2px solid var(--golden-batter);
     border-radius: 20px;
-    background-color: var(--white);
-    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.15);
+    background-color: var(--light-cream);
+    box-shadow: 0 8px 25px rgba(132, 89, 43, 0.15);
 }
 
 .sub-header {
@@ -40,12 +40,12 @@
 
 /* КАРТОЧКИ МЕТРИК */
 .metric-card {
-    background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-cream) 100%);
     padding: 25px;
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    border: 2px solid var(--light-blue);
+    box-shadow: 0 6px 20px rgba(116, 48, 20, 0.08);
+    border: 2px solid var(--golden-batter);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -58,44 +58,44 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+    background: linear-gradient(90deg, var(--toasted-caramel), var(--olive-harvest));
 }
 
 .metric-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(30, 136, 229, 0.2);
-    border-color: var(--primary-blue);
+    box-shadow: 0 12px 30px rgba(132, 89, 43, 0.2);
+    border-color: var(--toasted-caramel);
 }
 
 /* ЗАГОЛОВКИ СЕКЦИЙ */
 .section-header {
     font-size: 1.8rem;
-    color: var(--dark-blue);
-    border-left: 6px solid var(--primary-blue);
+    color: var(--text-primary);
+    border-left: 6px solid var(--toasted-caramel);
     padding-left: 20px;
     margin: 3rem 0 2rem 0;
     font-weight: 600;
-    background: linear-gradient(45deg, var(--dark-blue), var(--accent-green));
+    background: linear-gradient(45deg, var(--spiced-wine), var(--olive-harvest));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     padding: 20px;
     border-radius: 12px;
-    background-color: var(--light-gray);
+    background-color: var(--light-cream);
 }
 
 /* ИНФО-БОКСЫ */
 .info-box {
-    background: linear-gradient(135deg, var(--white) 0%, #E3F2FD 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--golden-batter) 100%);
     padding: 25px;
     border-radius: 16px;
     margin: 20px 0;
-    box-shadow: 0 6px 20px rgba(30, 136, 229, 0.1);
-    border: 2px solid var(--light-blue);
-    border-left: 6px solid var(--primary-blue);
+    box-shadow: 0 6px 20px rgba(132, 89, 43, 0.1);
+    border: 2px solid var(--golden-batter);
+    border-left: 6px solid var(--toasted-caramel);
 }
 
 .info-box h3 {
-    color: var(--dark-blue);
+    color: var(--spiced-wine);
     margin-bottom: 10px;
     font-size: 1.4rem;
 }
@@ -108,30 +108,30 @@
 
 /* TELEGRAM БОКС */
 .telegram-box {
-    background: linear-gradient(135deg, var(--white) 0%, #E8F5E9 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--golden-batter) 100%);
     padding: 22px;
     border-radius: 16px;
     text-align: center;
     margin: 20px 0;
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.15);
-    border: 2px solid var(--light-green);
-    border-left: 6px solid var(--accent-green);
+    box-shadow: 0 6px 20px rgba(132, 89, 43, 0.15);
+    border: 2px solid var(--olive-harvest);
+    border-left: 6px solid var(--toasted-caramel);
     transition: all 0.3s ease;
 }
 
 .telegram-box:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+    box-shadow: 0 10px 25px rgba(132, 89, 43, 0.2);
 }
 
 .telegram-box h4 {
-    color: var(--dark-green);
+    color: var(--spiced-wine);
     margin-bottom: 8px;
     font-size: 1.3rem;
 }
 
 .telegram-box a {
-    color: var(--dark-green) !important;
+    color: var(--spiced-wine) !important;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
@@ -141,16 +141,52 @@
     text-decoration: underline;
 }
 
+/* БАДЖИ ДЛЯ ПЛОХИХ ДНЕЙ */
+.bad-day-badge {
+    background: linear-gradient(135deg, var(--spiced-wine) 0%, var(--couhide-cocoa) 100%);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+/* ЛЕГЕНДЫ ДЛЯ ГРАФИКОВ */
+.graph-legend {
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-cream) 100%);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--golden-batter);
+    font-size: 0.9rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 8px;
+}
+
 /* КНОПКИ */
 .stButton button {
-    background: linear-gradient(45deg, var(--primary-blue), var(--dark-blue));
+    background: linear-gradient(45deg, var(--toasted-caramel), var(--spiced-wine));
     color: white;
     border: none;
     border-radius: 12px;
     padding: 12px 28px;
     font-weight: 600;
     font-size: 1rem;
-    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+    box-shadow: 0 4px 15px rgba(132, 89, 43, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -169,15 +205,15 @@
 
 .stButton button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
-    background: linear-gradient(45deg, var(--dark-blue), var(--primary-blue));
+    box-shadow: 0 8px 25px rgba(132, 89, 43, 0.4);
+    background: linear-gradient(45deg, var(--spiced-wine), var(--toasted-caramel));
 }
 
 .stButton button:hover::before {
     left: 100%;
 }
 
-/* ГРАФИКИ - КРАСИВЫЕ ТЕНИ И РАМКИ */
+/* ГРАФИКИ */
 .js-plotly-plot .plotly, .plot-container {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -187,15 +223,15 @@
 
 /* САЙДБАР */
 section[data-testid="stSidebar"] > div {
-    background: linear-gradient(180deg, var(--white) 0%, var(--light-gray) 100%);
-    border-right: 2px solid var(--light-blue);
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-cream) 100%);
+    border-right: 2px solid var(--golden-batter);
 }
 
 /* МЕТРИКИ */
 [data-testid="stMetricValue"] {
     font-size: 1.8rem !important;
     font-weight: 700;
-    color: var(--dark-blue) !important;
+    color: var(--spiced-wine) !important;
 }
 
 [data-testid="stMetricLabel"] {
@@ -241,7 +277,7 @@ section[data-testid="stSidebar"] > div {
 hr {
     border: none;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+    background: linear-gradient(90deg, transparent, var(--toasted-caramel), transparent);
     margin: 2rem 0;
 }
 
@@ -251,15 +287,15 @@ hr {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--light-gray);
+    background: var(--light-cream);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--primary-blue), var(--accent-green));
+    background: linear-gradient(180deg, var(--toasted-caramel), var(--olive-harvest));
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--dark-blue), var(--dark-green));
+    background: linear-gradient(180deg, var(--spiced-wine), var(--couhide-cocoa));
 }
