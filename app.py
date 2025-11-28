@@ -1,3 +1,4 @@
+# app.py
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -25,7 +26,7 @@ def load_css():
         st.markdown("""
         <style>
             .main-header { 
-                font-size: 3rem;
+                font-size: 3.5rem !important;
                 text-align: center;
                 margin-bottom: 1rem;
                 font-weight: 700;
@@ -39,7 +40,7 @@ def load_css():
                 box-shadow: 0 8px 25px rgba(132, 89, 43, 0.15);
             }
             .sub-header {
-                font-size: 1.4rem;
+                font-size: 1.8rem !important;
                 text-align: center;
                 margin-bottom: 3rem;
                 font-weight: 300;
@@ -47,7 +48,7 @@ def load_css():
                 font-style: italic;
             }
             .section-header {
-                font-size: 1.8rem;
+                font-size: 2.2rem !important;
                 color: #2C2C2C;
                 border-left: 6px solid #84592B;
                 padding-left: 20px;
@@ -69,6 +70,14 @@ def load_css():
                 border: 2px solid #E8D1A7;
                 border-left: 6px solid #84592B;
             }
+            .info-box h3 {
+                font-size: 1.8rem !important;
+                margin-bottom: 15px;
+            }
+            .info-box p {
+                font-size: 1.3rem !important;
+                line-height: 1.6;
+            }
             .telegram-box {
                 background: linear-gradient(135deg, #FFFFFF 0%, #E8D1A7 100%);
                 padding: 22px;
@@ -78,6 +87,12 @@ def load_css():
                 box-shadow: 0 6px 20px rgba(132, 89, 43, 0.15);
                 border: 2px solid #9D9167;
                 border-left: 6px solid #84592B;
+            }
+            .telegram-box h4 {
+                font-size: 1.6rem !important;
+            }
+            .telegram-box p, .telegram-box a {
+                font-size: 1.3rem !important;
             }
             .metric-card {
                 background: linear-gradient(135deg, #FFFFFF 0%, #F8F5F0 100%);
@@ -90,31 +105,50 @@ def load_css():
             .bad-day-badge {
                 background: linear-gradient(135deg, #743014 0%, #442D1C 100%);
                 color: white;
-                padding: 8px 15px;
+                padding: 12px 20px;
                 border-radius: 20px;
-                font-size: 0.9rem;
+                font-size: 1.2rem !important;
                 font-weight: 600;
                 margin: 5px;
                 display: inline-block;
             }
             .graph-legend {
                 background: linear-gradient(135deg, #FFFFFF 0%, #F8F5F0 100%);
-                padding: 15px;
+                padding: 20px;
                 border-radius: 10px;
-                margin: 10px 0;
+                margin: 15px 0;
                 border: 1px solid #E8D1A7;
-                font-size: 0.9rem;
+                font-size: 1.2rem !important;
             }
             .legend-item {
                 display: flex;
                 align-items: center;
-                margin: 5px 0;
+                margin: 8px 0;
+                font-size: 1.2rem !important;
             }
             .legend-color {
-                width: 15px;
-                height: 15px;
+                width: 20px;
+                height: 20px;
                 border-radius: 3px;
-                margin-right: 8px;
+                margin-right: 12px;
+            }
+            /* Увеличиваем шрифты в метриках */
+            [data-testid="stMetricValue"] {
+                font-size: 2.5rem !important;
+            }
+            [data-testid="stMetricLabel"] {
+                font-size: 1.4rem !important;
+            }
+            /* Увеличиваем шрифты в селекторах */
+            .stSelectbox label {
+                font-size: 1.4rem !important;
+            }
+            .stDateInput label {
+                font-size: 1.4rem !important;
+            }
+            /* Увеличиваем шрифты в сайдбаре */
+            .css-1d391kg p {
+                font-size: 1.3rem !important;
             }
         </style>
         """, unsafe_allow_html=True)
@@ -242,28 +276,40 @@ def create_daily_avg_ratings_chart(data, selected_class=None):
         color_discrete_sequence=['#84592B']
     )
     
-    fig.update_traces(
-        line=dict(width=4),
-        marker=dict(size=8, color='#743014')
-    )
-    
+    # УВЕЛИЧИВАЕМ ШРИФТЫ В ГРАФИКАХ
     fig.update_layout(
-        xaxis=dict(tickformat='%d.%m.%Y'),
+        font=dict(size=18),  # Увеличиваем базовый размер шрифта
+        title_font_size=24,
+        xaxis=dict(
+            tickformat='%d.%m.%Y',
+            title_font_size=20,
+            tickfont_size=18
+        ),
+        yaxis=dict(
+            title_font_size=20,
+            tickfont_size=18
+        ),
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
         hovermode='x unified',
         showlegend=False
     )
     
+    fig.update_traces(
+        line=dict(width=4),
+        marker=dict(size=10, color='#743014')
+    )
+    
     # Добавляем горизонтальную линию для порога "плохого дня"
     fig.add_hline(y=3.0, line_dash="dash", line_color="#743014", 
                  annotation_text="Порог низкой оценки", 
-                 annotation_position="bottom right")
+                 annotation_position="bottom right",
+                 annotation_font_size=16)
     
     return fig
 
 def create_rating_distribution(data, selected_class=None):
-    """Гистограмма распределения оценок"""
+    """Гистограмма распределения оценок с разными цветами"""
     if selected_class and selected_class != "Все классы":
         filtered_data = data[data['class'] == selected_class]
         title = f'Распределение оценок - {selected_class}'
@@ -271,23 +317,58 @@ def create_rating_distribution(data, selected_class=None):
         filtered_data = data
         title = 'Распределение общих оценок'
     
-    # Постельная цветовая палитра
-    colors = ['#84592B', '#9D9167', '#E8D1A7', '#743014', '#442D1C']
+    if filtered_data.empty:
+        return None
     
-    fig = px.histogram(
-        filtered_data, 
-        x='overall_satisfaction',
-        nbins=5,
-        title=title,
-        color_discrete_sequence=colors,
-        labels={'overall_satisfaction': 'Общая оценка', 'count': 'Количество оценок'}
-    )
+    # ФИКСИРОВАННАЯ ЦВЕТОВАЯ ПАЛИТРА ДЛЯ КАЖДОЙ ОЦЕНКИ
+    rating_colors = {
+        1: '#442D1C',  # Самый темный для низкой оценки
+        2: '#743014',  
+        3: '#84592B',  
+        4: '#9D9167',  
+        5: '#E8D1A7'   # Самый светлый для высокой оценки
+    }
+    
+    # Создаем гистограмму с помощью go.Bar для индивидуальных цветов
+    rating_counts = filtered_data['overall_satisfaction'].value_counts().sort_index()
+    
+    # Создаем списки для данных
+    ratings = []
+    counts = []
+    colors = []
+    
+    for rating in sorted(rating_counts.index):
+        ratings.append(f'{rating} ⭐')
+        counts.append(rating_counts[rating])
+        colors.append(rating_colors[rating])
+    
+    fig = go.Figure(data=[go.Bar(
+        x=ratings,
+        y=counts,
+        marker_color=colors,
+        hovertemplate='<b>Оценка: %{x}</b><br>Количество: %{y}<extra></extra>'
+    )])
+    
+    # УВЕЛИЧИВАЕМ ШРИФТЫ В ГРАФИКАХ
     fig.update_layout(
-        xaxis=dict(tickmode='linear', dtick=1),
-        bargap=0.1,
+        title=title,
+        font=dict(size=18),
+        title_font_size=24,
+        xaxis=dict(
+            title='Оценка',
+            title_font_size=20,
+            tickfont_size=18
+        ),
+        yaxis=dict(
+            title='Количество оценок',
+            title_font_size=20,
+            tickfont_size=18
+        ),
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
+        bargap=0.1,
     )
+    
     return fig
 
 def create_class_comparison(data):
@@ -308,7 +389,19 @@ def create_class_comparison(data):
         color_continuous_scale=['#E8D1A7', '#9D9167', '#84592B', '#743014'],
         labels={'class': 'Класс', 'mean': 'Средняя оценка'}
     )
+    
+    # УВЕЛИЧИВАЕМ ШРИФТЫ В ГРАФИКАХ
     fig.update_layout(
+        font=dict(size=18),
+        title_font_size=24,
+        xaxis=dict(
+            title_font_size=20,
+            tickfont_size=18
+        ),
+        yaxis=dict(
+            title_font_size=20,
+            tickfont_size=18
+        ),
         coloraxis_showscale=False,
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
@@ -391,11 +484,12 @@ def create_meal_ratings_pie_charts(meal_ratings_df, surveys_df, users_df, select
         
         if meal_data.empty:
             fig = go.Figure()
-            fig.add_annotation(text="Нет данных", x=0.5, y=0.5, showarrow=False)
+            fig.add_annotation(text="Нет данных", x=0.5, y=0.5, showarrow=False, font=dict(size=20))
             fig.update_layout(
                 title=f'{meal_type.title()}',
                 plot_bgcolor='rgba(0,0,0,0)',
                 paper_bgcolor='rgba(0,0,0,0)',
+                font=dict(size=18)
             )
         else:
             rating_counts = meal_data['rating'].value_counts().sort_index(ascending=False)  # Сортируем от 5 к 1
@@ -415,20 +509,24 @@ def create_meal_ratings_pie_charts(meal_ratings_df, surveys_df, users_df, select
                 values=values,
                 marker=dict(colors=colors),
                 hole=0.3,
-                sort=False  # Сохраняем порядок от 5 к 1
+                sort=False,  # Сохраняем порядок от 5 к 1
+                textfont=dict(size=16)  # Увеличиваем шрифт в диаграмме
             )])
             
             fig.update_layout(
                 title=f'{meal_type.title()}',
+                title_font_size=22,
                 plot_bgcolor='rgba(0,0,0,0)',
                 paper_bgcolor='rgba(0,0,0,0)',
                 showlegend=True,
+                font=dict(size=16),
                 legend=dict(
                     orientation="h",
                     yanchor="bottom",
                     y=-0.2,
                     xanchor="center",
-                    x=0.5
+                    x=0.5,
+                    font=dict(size=16)
                 )
             )
         
@@ -467,7 +565,7 @@ def create_daily_surveys_chart(surveys_df, users_df, selected_class=None, date_r
         return None
     
     # КОНТРАСТНЫЕ ЦВЕТА для классов
-    class_colors = {'10А': '#84592B', '11А': '#743014'}  # Темно-коричневый и темно-красный
+    class_colors = {'10А': "#B39474", '11А': '#743014'}  # Темно-коричневый и темно-красный
     
     # Группируем по дате и классу
     if selected_class == "Все классы":
@@ -487,7 +585,7 @@ def create_daily_surveys_chart(surveys_df, users_df, selected_class=None, date_r
         # Увеличиваем контрастность линий
         fig.update_traces(
             line=dict(width=4),
-            marker=dict(size=8)
+            marker=dict(size=10)
         )
         
     else:
@@ -507,18 +605,30 @@ def create_daily_surveys_chart(surveys_df, users_df, selected_class=None, date_r
         )
         fig.update_traces(
             line=dict(width=4),
-            marker=dict(size=8)
+            marker=dict(size=10)
         )
     
+    # УВЕЛИЧИВАЕМ ШРИФТЫ В ГРАФИКАХ
     fig.update_layout(
-        xaxis=dict(tickformat='%d.%m.%Y'),
+        font=dict(size=18),
+        title_font_size=24,
+        xaxis=dict(
+            tickformat='%d.%m.%Y',
+            title_font_size=20,
+            tickfont_size=18
+        ),
+        yaxis=dict(
+            title_font_size=20,
+            tickfont_size=18
+        ),
         showlegend=(selected_class == "Все классы"),
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
         legend=dict(
             bgcolor='rgba(255,255,255,0.8)',
             bordercolor='#E8D1A7',
-            borderwidth=1
+            borderwidth=1,
+            font=dict(size=16)
         )
     )
     
@@ -811,7 +921,7 @@ def main():
     
     with col2:
         st.markdown("""
-        <div style="text-align: center; color: #5D5D5D; font-size: 0.9rem;">
+        <div style="text-align: center; color: #5D5D5D; font-size: 1.2rem;">
             <p>Дашборд анализа школьного питания • Школа 64</p>
             <p>Данные собираются через <a href="https://t.me/foodschool64_bot" target="_blank">Telegram-бота</a></p>
         </div>

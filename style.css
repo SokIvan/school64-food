@@ -15,7 +15,7 @@
 
 /* ОСНОВНЫЕ СТИЛИ */
 .main-header {
-    font-size: 3rem;
+    font-size: 3.5rem !important;
     text-align: center;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -30,7 +30,7 @@
 }
 
 .sub-header {
-    font-size: 1.4rem;
+    font-size: 1.8rem !important;
     text-align: center;
     margin-bottom: 3rem;
     font-weight: 300;
@@ -69,7 +69,7 @@
 
 /* ЗАГОЛОВКИ СЕКЦИЙ */
 .section-header {
-    font-size: 1.8rem;
+    font-size: 2.2rem !important;
     color: var(--text-primary);
     border-left: 6px solid var(--toasted-caramel);
     padding-left: 20px;
@@ -97,13 +97,14 @@
 .info-box h3 {
     color: var(--spiced-wine);
     margin-bottom: 10px;
-    font-size: 1.4rem;
+    font-size: 1.8rem !important;
 }
 
 .info-box p {
     color: var(--text-primary);
     line-height: 1.6;
     margin: 0;
+    font-size: 1.3rem !important;
 }
 
 /* TELEGRAM БОКС */
@@ -127,14 +128,17 @@
 .telegram-box h4 {
     color: var(--spiced-wine);
     margin-bottom: 8px;
-    font-size: 1.3rem;
+    font-size: 1.6rem !important;
+}
+
+.telegram-box p, .telegram-box a {
+    font-size: 1.3rem !important;
 }
 
 .telegram-box a {
     color: var(--spiced-wine) !important;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
 }
 
 .telegram-box a:hover {
@@ -145,9 +149,9 @@
 .bad-day-badge {
     background: linear-gradient(135deg, var(--spiced-wine) 0%, var(--couhide-cocoa) 100%);
     color: white;
-    padding: 8px 15px;
+    padding: 12px 20px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 1.2rem !important;
     font-weight: 600;
     margin: 5px;
     display: inline-block;
@@ -157,24 +161,52 @@
 /* ЛЕГЕНДЫ ДЛЯ ГРАФИКОВ */
 .graph-legend {
     background: linear-gradient(135deg, var(--white) 0%, var(--light-cream) 100%);
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 15px 0;
     border: 1px solid var(--golden-batter);
-    font-size: 0.9rem;
+    font-size: 1.2rem !important;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    margin: 5px 0;
+    margin: 8px 0;
+    font-size: 1.2rem !important;
 }
 
 .legend-color {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 3px;
-    margin-right: 8px;
+    margin-right: 12px;
+}
+
+/* УВЕЛИЧИВАЕМ ШРИФТЫ В МЕТРИКАХ */
+[data-testid="stMetricValue"] {
+    font-size: 2.5rem !important;
+    font-weight: 700;
+    color: var(--spiced-wine) !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 1.4rem !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+}
+
+/* УВЕЛИЧИВАЕМ ШРИФТЫ В СЕЛЕКТОРАХ */
+.stSelectbox label {
+    font-size: 1.4rem !important;
+}
+
+.stDateInput label {
+    font-size: 1.4rem !important;
+}
+
+/* УВЕЛИЧИВАЕМ ШРИФТЫ В САЙДБАРЕ */
+.css-1d391kg p {
+    font-size: 1.3rem !important;
 }
 
 /* КНОПКИ */
@@ -185,7 +217,7 @@
     border-radius: 12px;
     padding: 12px 28px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem !important;
     box-shadow: 0 4px 15px rgba(132, 89, 43, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -227,19 +259,6 @@ section[data-testid="stSidebar"] > div {
     border-right: 2px solid var(--golden-batter);
 }
 
-/* МЕТРИКИ */
-[data-testid="stMetricValue"] {
-    font-size: 1.8rem !important;
-    font-weight: 700;
-    color: var(--spiced-wine) !important;
-}
-
-[data-testid="stMetricLabel"] {
-    font-size: 1rem !important;
-    color: var(--text-secondary) !important;
-    font-weight: 500;
-}
-
 /* АНИМАЦИИ */
 @keyframes fadeInUp {
     from {
@@ -259,7 +278,7 @@ section[data-testid="stSidebar"] > div {
 /* АДАПТИВНОСТЬ */
 @media (max-width: 768px) {
     .main-header {
-        font-size: 2.2rem;
+        font-size: 2.5rem !important;
         padding: 15px;
     }
     
@@ -268,8 +287,16 @@ section[data-testid="stSidebar"] > div {
     }
     
     .section-header {
-        font-size: 1.5rem;
+        font-size: 1.8rem !important;
         padding: 15px;
+    }
+    
+    [data-testid="stMetricValue"] {
+        font-size: 2rem !important;
+    }
+    
+    [data-testid="stMetricLabel"] {
+        font-size: 1.2rem !important;
     }
 }
 
@@ -298,4 +325,14 @@ hr {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, var(--spiced-wine), var(--couhide-cocoa));
+}
+
+/* УВЕЛИЧИВАЕМ ШРИФТЫ В ПРЕДУПРЕЖДЕНИЯХ */
+.stAlert {
+    font-size: 1.2rem !important;
+}
+
+/* УВЕЛИЧИВАЕМ ШРИФТЫ В СПИННЕРАХ */
+.stSpinner {
+    font-size: 1.3rem !important;
 }
